@@ -1,4 +1,3 @@
-// frontend/src/components/ProductMaster.js
 
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
@@ -11,12 +10,12 @@ function ProductMaster() {
   const [categories, setCategories] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(0);
-  const pageSize = 10; // Define page size
+  const pageSize = 10; 
 
   useEffect(() => {
     fetchProducts();
     fetchCategories();
-  }, [currentPage]); // Fetch products when currentPage changes
+  }, [currentPage]); 
 
   const fetchProducts = async () => {
     try {
@@ -24,7 +23,7 @@ function ProductMaster() {
         params: { page: currentPage, limit: pageSize },
       });
       setProducts(response.data.products);
-      const total = response.data.total || 0; // Adjust based on your response structure
+      const total = response.data.total || 0; 
       setTotalPages(Math.ceil(total / pageSize));
     } catch (error) {
       console.error('Error fetching products:', error);
@@ -55,7 +54,7 @@ function ProductMaster() {
       }
       setProductName('');
       setCategoryId('');
-      fetchProducts(); // Refresh products after adding/updating
+      fetchProducts(); 
     } catch (error) {
       console.error('Error adding/updating product:', error);
     }
@@ -71,7 +70,7 @@ function ProductMaster() {
     if (window.confirm('Are you sure you want to delete this product?')) {
       try {
         await axios.delete(`http://localhost:5000/api/products/${id}`);
-        fetchProducts(); // Refresh products after delete
+        fetchProducts(); 
       } catch (error) {
         console.error('Error deleting product:', error);
       }
@@ -103,7 +102,6 @@ function ProductMaster() {
       </select>
       <button onClick={addProduct}>{editId ? 'Update' : 'Add'}</button>
       
-      {/* Product List in Table Format */}
       <table>
         <thead>
           <tr>
@@ -133,7 +131,6 @@ function ProductMaster() {
         </tbody>
       </table>
 
-      {/* Pagination Controls */}
       <div>
         <button onClick={() => handlePageChange(currentPage - 1)} disabled={currentPage === 1}>
           Previous

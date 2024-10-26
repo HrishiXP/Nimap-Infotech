@@ -1,12 +1,11 @@
-// backend/config/db.js
 
 const mysql = require('mysql2');
 
 const connection = mysql.createConnection({
   host: 'localhost',
-  user: 'root', // Replace with your database username
-  password: 'Hrishi@99', // Replace with your database password
-  database: 'productdb' // Replace with your database name
+  user: 'root',
+  password: 'Hrishi@99',
+  database: 'productdb'
 });
 
 connection.connect((err) => {

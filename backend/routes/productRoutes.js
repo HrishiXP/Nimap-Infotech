@@ -1,10 +1,8 @@
-// backend/routes/productRoutes.js
 
 const express = require('express');
 const router = express.Router();
 const Product = require('../models/product');
 
-// Get all products with pagination
 router.get('/', (req, res) => {
   const page = parseInt(req.query.page) || 1;
   const limit = parseInt(req.query.limit) || 10;
@@ -15,7 +13,6 @@ router.get('/', (req, res) => {
   });
 });
 
-// Create a new product
 router.post('/', (req, res) => {
   const { name, categoryId } = req.body;
   Product.create(name, categoryId, (err, result) => {
@@ -24,7 +21,6 @@ router.post('/', (req, res) => {
   });
 });
 
-// Update a product
 router.put('/:id', (req, res) => {
   const { id } = req.params;
   const { name, categoryId } = req.body;
@@ -34,7 +30,6 @@ router.put('/:id', (req, res) => {
   });
 });
 
-// Delete a product
 router.delete('/:id', (req, res) => {
   const { id } = req.params;
   Product.delete(id, (err) => {

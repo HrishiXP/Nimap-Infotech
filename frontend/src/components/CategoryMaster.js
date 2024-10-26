@@ -1,4 +1,3 @@
-// frontend/src/components/CategoryMaster.js
 
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';

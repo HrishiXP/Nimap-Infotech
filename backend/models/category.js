@@ -1,4 +1,3 @@
-// backend/models/Category.js
 
 const db = require('../config/db');
 

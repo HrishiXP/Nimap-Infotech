@@ -1,10 +1,8 @@
-// backend/routes/categoryRoutes.js
 
 const express = require('express');
 const router = express.Router();
 const Category = require('../models/category');
 
-// Get all categories
 router.get('/', (req, res) => {
   Category.getAll((err, results) => {
     if (err) return res.status(500).json(err);
@@ -12,7 +10,6 @@ router.get('/', (req, res) => {
   });
 });
 
-// Create a new category
 router.post('/', (req, res) => {
   const { name } = req.body;
   Category.create(name, (err, result) => {
@@ -21,7 +18,6 @@ router.post('/', (req, res) => {
   });
 });
 
-// Update a category
 router.put('/:id', (req, res) => {
   const { id } = req.params;
   const { name } = req.body;
@@ -31,7 +27,6 @@ router.put('/:id', (req, res) => {
   });
 });
 
-// Delete a category
 router.delete('/:id', (req, res) => {
   const { id } = req.params;
   Category.delete(id, (err) => {
